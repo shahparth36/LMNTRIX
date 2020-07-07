@@ -105,7 +105,7 @@ own env variables you are almost ready. Just one more thing to do.
 
 ## Applications
 >Everyone craves for love in their life, someone who could make him/her happy.
->So here it will  solve the problem of people being single in search of a 
+>So here it will solve the problem of people being single in search of a 
 >desired partner. It could be possible that two people that are meant for each other 
 >are not in the same school,college or office so here this dating website could help 
 >search for the meant ones.
@@ -120,11 +120,7 @@ own env variables you are almost ready. Just one more thing to do.
 >* Congratulations mail from the set it up account once u match with someone.
 
 ## Screenshots
-Add a few screenshots here to give the viewer a quick idea of what your project looks like. After all, a picture speaks a thousand words.
-
-You'll have to link the screenshots from your drive folder here.
-
-[Screenshot alt text](https://drive.google.com/file/d/177Bmta6THN4JkdS5ShPqldoePqmWW-cs/view?usp=sharing)
+<img src= "https://drive.google.com/file/d/177Bmta6THN4JkdS5ShPqldoePqmWW-cs/view?usp=sharing" height = 350/>
 
 Use this template as a guide for writing your documentation. Feel free to customize and adapt it for you project.
 For more Markdown syntax help, visit [here](https://www.markdownguide.org/basic-syntax/)
