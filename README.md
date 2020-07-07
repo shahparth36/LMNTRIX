@@ -120,8 +120,8 @@ own env variables you are almost ready. Just one more thing to do.
 >* Congratulations mail from the set it up account once u match with someone.
 
 ## Screenshots
-<img src = "https://drive.google.com/file/d/177Bmta6THN4JkdS5ShPqldoePqmWW-cs/view?usp=sharing">
-![An old rock in the desert]
+
+<img src="https://drive.google.com/file/d/1DojyqwbB0bkvs6b1bhawUDvvFdCFJlIl/view?usp=sharing" height = 350/>
 
 Use this template as a guide for writing your documentation. Feel free to customize and adapt it for you project.
 For more Markdown syntax help, visit [here](https://www.markdownguide.org/basic-syntax/)
