@@ -30,7 +30,7 @@
 >any point of time if you need a break from the dating website you have the feature of deleting your account.
 >General queries are answered in the support page.
 >
->* GitHub repo link: [Link to repository](https://github.com/LMNTRIX-SETITUP)
+>* GitHub repo link: [Link to repository](https://github.com/Setitup/LMNTRIX-SETITUP)
 >* Drive link: [Drive link here](https://drive.google.com/file/d/1LW8eb5jRkimQpHiOrBNpsmuPprX9p007/view?usp=sharing)
 >* Website link: [Website link here](https://setitupcorp.herokuapp.com)
 
