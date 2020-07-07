@@ -46,8 +46,8 @@
   * MongoDB
 
 ## Project Setup
-* Clone our Github Repository link.
-*Write the following command in the terminal:
+>* Clone our Github Repository link.
+>* Write the following command in the terminal:
 
 ```
 npm i
