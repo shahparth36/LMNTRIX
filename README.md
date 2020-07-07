@@ -121,6 +121,6 @@ own env variables you are almost ready. Just one more thing to do.
 
 ## Screenshots
 
-<img src ="https://github.com/Setitupcorp/LMNTRIX-SETITUP/blob/master/Website%20screenshots/Screenshot%20(10).png" >
+<img src ="https://github.com/Setitupcorp/LMNTRIX-SETITUP/blob/master/Website%20screenshots/Screenshot%20(10).png" height = = "350" />
 Use this template as a guide for writing your documentation. Feel free to customize and adapt it for you project.
 For more Markdown syntax help, visit [here](https://www.markdownguide.org/basic-syntax/)
