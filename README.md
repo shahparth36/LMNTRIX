@@ -29,10 +29,10 @@
 >is also the feature of unliking someone. The facility of editing your profile is available and at 
 >any point of time if you need a break from the dating website you have the feature of deleting your account.
 >General queries are answered in the support page.
-
-* GitHub repo link: [Link to repository]https://github.com/LMNTRIX-SETITUP
-* Drive link: [Drive link here]https://drive.google.com/file/d/1LW8eb5jRkimQpHiOrBNpsmuPprX9p007/view?usp=sharing
-* Website link: [Website link here]https://setitupcorp.herokuapp.com
+>
+>* GitHub repo link: [Link to repository](https://github.com/LMNTRIX-SETITUP)
+>* Drive link: [Drive link here](https://drive.google.com/file/d/1LW8eb5jRkimQpHiOrBNpsmuPprX9p007/view?usp=sharing)
+>* Website link: [Website link here](https://setitupcorp.herokuapp.com)
 
 ## Technology stack
 
@@ -89,7 +89,7 @@ DATABASEURL =
 
 
 >A few resources to get you started if this is your first Express Project:
->  * Web Developer Bootcamp: -[Resource link here]https://www.udemy.com/course/the-web-developer-bootcamp/
+>  * Web Developer Bootcamp: -[Resource link here](https://www.udemy.com/course/the-web-developer-bootcamp/)
 
 ## Usage
 >Once you have cloned our repository, installed all packages and added your 
