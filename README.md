@@ -31,12 +31,10 @@
 >General queries are answered in the support page.
 >
 >* GitHub repo link: [Link to repository](https://github.com/Setitupcorp/LMNTRIX-SETITUP)
->* Drive link: [Drive link here](https://drive.google.com/file/d/1LW8eb5jRkimQpHiOrBNpsmuPprX9p007/view?usp=sharing)
+>* Drive link: [Drive link here](https://drive.google.com/drive/folders/1OkiUDZzGOPzRSO-xjy9h-OE4st5pdH1Z?usp=sharing)
 >* Website link: [Website link here](https://setitupcorp.herokuapp.com)
 
 ## Technology stack
-
->Tools and technologies that you learnt and used in the project.
 * Languages
   * HTML
   * CSS
@@ -121,6 +119,16 @@ own env variables you are almost ready. Just one more thing to do.
 
 ## Screenshots
 
+<img src ="https://github.com/Setitupcorp/LMNTRIX-SETITUP/blob/master/Website%20screenshots/Screenshot%20(8).png" height ="350" />
 <img src ="https://github.com/Setitupcorp/LMNTRIX-SETITUP/blob/master/Website%20screenshots/Screenshot%20(10).png" height ="350" />
-Use this template as a guide for writing your documentation. Feel free to customize and adapt it for you project.
-For more Markdown syntax help, visit [here](https://www.markdownguide.org/basic-syntax/)
+<img src ="https://github.com/Setitupcorp/LMNTRIX-SETITUP/blob/master/Website%20screenshots/Screenshot%20(11).png" height ="350" />
+<img src ="https://github.com/Setitupcorp/LMNTRIX-SETITUP/blob/master/Website%20screenshots/Screenshot%20(12).png" height ="350" />
+<img src ="https://github.com/Setitupcorp/LMNTRIX-SETITUP/blob/master/Website%20screenshots/Screenshot%20(16).png" height ="350" />
+<img src ="https://github.com/Setitupcorp/LMNTRIX-SETITUP/blob/master/Website%20screenshots/Screenshot%20(13).png" height ="350" />
+<img src ="https://github.com/Setitupcorp/LMNTRIX-SETITUP/blob/master/Website%20screenshots/Screenshot%20(15).png" height ="350" />
+<img src ="https://github.com/Setitupcorp/LMNTRIX-SETITUP/blob/master/Website%20screenshots/Screenshot%20(21).png" height ="350" />
+<img src ="https://github.com/Setitupcorp/LMNTRIX-SETITUP/blob/master/Website%20screenshots/Screenshot%20(26).png" height ="350" />
+<img src ="https://github.com/Setitupcorp/LMNTRIX-SETITUP/blob/master/Website%20screenshots/Screenshot%20(27).png" height ="350" />
+<img src ="https://github.com/Setitupcorp/LMNTRIX-SETITUP/blob/master/Website%20screenshots/Screenshot%20(28).png" height ="350" />
+<img src ="https://github.com/Setitupcorp/LMNTRIX-SETITUP/blob/master/Website%20screenshots/Screenshot%20(29).png" height ="350" />
+<img src ="https://github.com/Setitupcorp/LMNTRIX-SETITUP/blob/master/Website%20screenshots/Screenshot%20(32).png" height ="350" />
