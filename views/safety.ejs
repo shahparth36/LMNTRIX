@@ -1,0 +1,34 @@
+<%- include("./partials/header")%>
+<html>
+	<head>
+        <title>Safety | SetItUp</title>
+        <link rel="icon" href="https://res.cloudinary.com/dcimcuqjm/image/upload/v1593546882/Screenshot_97_vadfhb.png" type="image/x-icon">
+	<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/stylesheets/safety.css">
+	</head>
+	<body>
+		<ul class="nav justify-content-center nav-tabs" id="myTab" role="tablist">
+		  <li class="nav-item" role="presentation">
+			<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Safety</a>
+		  </li>
+		  <li class="nav-item" role="presentation">
+			<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Resources</a>
+		  </li>
+		  <li class="nav-item" role="presentation">
+			<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">FAQ's</a>
+		  </li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+		  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+				<%- include("./safetypage")%>
+	
+		  </div>
+		  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+				<%- include("./resourcespage")%>
+		  </div>
+		  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+			<%- include("./faqpage")%>
+		  </div>
+        </div>
+<%- include("./partials/footer")%>
+<script src="/scripts/safety.js"></script>

@@ -1,0 +1,492 @@
+<html>
+
+<head>
+    <title>Create Profile | SetItUp</title>
+    <link rel="icon" href="https://res.cloudinary.com/dcimcuqjm/image/upload/v1593546882/Screenshot_97_vadfhb.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <% if(error && error.length > 0 ) { %>
+        <div class="row d-flex justify-content-between m-2">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="width: 100%;">
+                <%= error %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <% } %>
+        <% if(success && success.length > 0 ) { %>
+        <div class="row d-flex justify-content-between m-2">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 100%;">
+                <%= success %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        
+        <% } %>
+    </div>
+
+<div class="container col-11 col-lg-9 col-xl-7" style="z-index: 10;">
+    <div>
+        <div class="profile-pg mx-2 card my-5 border-dark col-12 ">
+
+            <div class = " profile-pg jumbotron mb-0">
+                <div class="h1 text-lg text-center text-info m-0 p-0">
+                    Your Profile! &nbsp;<i class="fas fa-venus-mars"></i>
+                </div>
+            </div>
+            <form action="/profile" method="POST" enctype = "multipart/form-data" class="needs-validation" novalidate>
+                <div class="card-body col-md-10 mx-auto text-dark">
+
+                    <div style="margin: 15px 0px;" class="hr-theme-slash-2">
+                        <div class="hr-line"></div>
+                        <div class="hr-icon"><i class="fas fa-venus-mars"></i></div>
+                        <div class="hr-line"></div>
+                     </div>
+            
+            <h3 class="card-title text-center mb-4 py-3 font-weight-bold">Your Entered Details</h3>
+            
+            <div class="form-row">
+                <div class=" col-12 col-sm-6">
+                    <label class="col-form-label-lg">Username</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping"><i class="fas fa-at"></i></span>
+                        </div>
+                        <input readonly type="text" class="form-control" name="user[username]" aria-label="username" value="<%= user.username %>" aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+                <div class=" col-12 col-sm-6">
+                    <label class="col-form-label-lg">Email</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text" id="addon-wrapping"><i class="fas fa-envelope"></i></span>
+                        </div>
+                        <input readonly type="text" class="form-control" name="user[email]" aria-label="username" value="<%= user.email %>" aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class=" col-12 col-sm-9 mx-auto">
+                    <label class="col-form-label-lg">Contact No.</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping"><i class="fas fa-mobile"></i></span>
+                        </div>
+                        <input readonly type="text" class="form-control" name="user[phNumber]" aria-label="Contact" value="<%= user.phNumber %>" aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class=" col-12 col-sm-6">
+                    <label class="col-form-label-lg">Age</label>
+                    <div class="input-group">
+                        <input readonly type="text" class="form-control" name="user[age]" aria-label="username" value="<%= user.age %>" aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+                <div class=" col-12 col-sm-6">
+                    <label class="col-form-label-lg">DOB</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text" id="addon-wrapping"><i class="fas fa-birthday-cake"></i></span>
+                        </div>
+                        <input readonly type="text" class="form-control" name="user[date]" aria-label="username" value="<%= user.date %>" aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row d-none">
+                <div class=" col-12 col-sm-6">
+                    <div class="input-group">
+                        <input readonly type="text" class="form-control" name="user[secure_url]" aria-label="username" value="<%= user.image %>" aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+                <div class=" col-12 col-sm-6">
+                    <div class="input-group">
+                        <input readonly type="text" class="form-control" name="user[public_id]" aria-label="username" value="<%= user.imageId %>" aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row d-none">
+                <div class=" col-12 col-sm-9">
+                    <div class="input-group">
+                        <input readonly type="text" class="form-control" name="password" aria-label="password" value="<%= user.password %>" aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row d-none">
+                <div class=" col-12 col-sm-9">
+                    <div class="input-group">
+                        <input readonly type="text" class="form-control" name="user[userAgeGroup]" aria-label="userAgeGroup" value="<%= user.userAgeGroup %>" aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin: 15px 0px;" class="hr-theme-slash-2">
+                <div class="hr-line"></div>
+                <div class="hr-icon"><i class="fas fa-venus-mars"></i></div>
+                <div class="hr-line"></div>
+            </div>
+            
+            <h3 class="card-title text-center mb-4 py-3 font-weight-bold">Set up your Profile.</h3>
+
+                    <div class="form-row">
+                        <div class=" col-12 col-sm-6">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="addon-wrapping"><i class="fas fa-id-card"></i></span>
+                            </div>
+                            <input required type="text" class="form-control" name="user[firstName]" placeholder="First Name *" aria-label="First Name" aria-describedby="addon-wrapping">
+                            <div class="invalid-feedback">
+                                Please enter a valid Name.
+                            </div>
+                        </div>
+                            <div class="invalid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="addon-wrapping"><i class="fas fa-id-card"></i></span>
+                                </div>
+                                <input required type="text" class="form-control" name="user[lastName]" placeholder="Last Name *" aria-label="Last Name" aria-describedby="addon-wrapping">
+                                <div class="invalid-feedback">
+                                    Please enter a valid Name.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-12 col-sm-6">
+                            <label class="col-form-label-lg" >City<span class="input-req-ind">*</span></label>
+                            <div class="input-group ">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="addon-wrapping"><i class="fas fa-map-marker-alt"></i></span>
+                                </div>
+                                <select required name="user[city]" class="form-control" aria-label="City " aria-describedby="addon-wrapping">
+                                    <option selected disabled value="" >Select City </option>
+                                    <% for(var i =0; i<cities.length; i++) { %>
+                                        <option><%=cities[i]%></option>
+                                    <% } %>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please enter a valid City.
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-12 col-sm-6">
+                          <label class="col-form-label-lg">Gender<span class="input-req-ind">*</span></label>
+                          <select required name="user[gender]" class="form-control custom-select ">
+                            <option selected disabled value="">--Not Specified--</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Others</option>
+                          </select>
+                            <div class="invalid-feedback">
+                                Please select a valid Option.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row d-flex justify-content-center">
+                       <div class="form-group col-12 col-sm-4 ">
+                         <label class="col-form-label-lg">Nickname</label>
+                         <div class="input-group flex-nowrap">
+                           <div class="input-group-prepend">
+                             <span class="input-group-text" id="addon-wrapping"><i class="fas fa-user-tag"></i></span>
+                           </div>
+                           <input type="text" class="form-control" name="user[nickname]" aria-label="Nickname" aria-describedby="addon-wrapping">
+                       </div>
+                       </div>
+                    </div>
+
+                    <div style="margin: 15px 0px;" class="hr-theme-slash-2">
+                       <div class="hr-line"></div>
+                       <div class="hr-icon"><i class="fas fa-venus-mars"></i></div>
+                       <div class="hr-line"></div>
+                    </div>
+
+
+                    <h3 class="card-title text-center mb-4 py-3 font-weight-bold">Describe Yourself so People know more About You.</h3>
+
+                    <div style="width: 85%;" class=" mx-auto form-row mb-5 mt-1">
+                       <label class=" pt-3 mr-4 col-form-label-lg pl-0">Write a short description about yourself...<span class="input-req-ind">*</span></label>
+                       <textarea required name="user[bio]" class="form-control" rows="10" maxlength="750"></textarea>
+                    </div>
+
+                    <div class="form-row d-flex justify-content-around">
+                       <div class="form-group col-12 col-sm-5">
+                           <label class="col-form-label-lg">Marital Status<span class="input-req-ind">*</span></label>
+                           <select required name="user[maritalStatus]" class="form-control custom-select">
+                               <option selected disabled value="">--Not Specified--</option>
+                               <option>Single</option>
+                               <option>Divorced</option>
+                               <option>Widowed</option>
+                           </select>
+                           <div class="invalid-feedback">
+                               Please choose a valid option.
+                           </div>
+                       </div>
+                       <div class="form-group col-12 col-sm-5">
+                           <label class="col-form-label-lg" >Looking for ?<span class="input-req-ind">*</span></label>
+                           <select  required name="user[relType]" class="form-control custom-select">
+                               <option selected disabled value="">--Not Specified--</option>
+                               <option>Anything will do</option>
+                               <option>Short Term</option>
+                               <option>Long Term</option>
+                               <option>Hookups</option>
+                               <option>One Night Stands</option>
+                               <option>Casual Flings</option>
+                           </select>
+                           <div class="invalid-feedback">
+                               Please choose a valid option.
+                           </div>
+                       </div>
+
+                    </div>
+
+                    <div class="form-row d-flex justify-content-around">
+
+                       <div class="form-group col-12 col-sm-3 col-md-4">
+                           <label class="col-form-label-lg">You are...<span class="input-req-ind">*</span></label>
+                           <select required name="user[relPreference]" class="form-control custom-select">
+                               <option selected disabled value="">--Not Specified--</option>
+                               <option>Straight</option>
+                               <option>Homosexual</option>
+                               <option>Bisexual</option>
+                           </select>
+                           <div class="invalid-feedback">
+                               Please choose a valid option.
+                           </div>
+                       </div>
+
+                       <div class="form-group col-12 col-sm-3 col-md-4 pr-2">
+                           <label class="col-form-label-lg">Your Preference?<span class="input-req-ind">*</span></label>
+                           <select required name="user[relDistance]" class="form-control custom-select">
+                               <option selected disabled value="">Choose..</option>
+                               <option>Anything Will Do</option>
+                               <option>Short Distance Relationships</option>
+                               <option>Long Distance Relationship</option>
+                           </select>
+                           <div class="invalid-feedback">
+                               Please choose a valid option.
+                           </div>
+                       </div>
+
+                       <div class="form-group col-12 col-sm-3 col-md-4 pr-2">
+                           <label class="col-form-label-lg">Live-in?<span class="input-req-ind">*</span></label>
+                           <select required name="user[liveIn]" class="form-control custom-select">
+                             <option selected>--Not Specified--</option>
+                             <option>Yes</option>
+                             <option>No</option>
+                           </select>
+                       </div>
+                    </div>
+
+                    <div class="form-row d-flex justify-content-center">
+                       <div class="form-group col-12 col-md-10 pr-2">
+                           <label class="col-form-label-lg">You are currently...<span class="input-req-ind">*</span></label>
+                           <select required name="user[currently]" class="form-control custom-select">
+                             <option selected disabled value="">--Not Specified--</option>
+                             <option>Studying in School</option>
+                             <option>Studying in Junior College</option>
+                             <option>Studying in Degree College</option>
+                             <option>Working Professional</option>
+                             <option>Working as a Medical Practioner</option>
+                             <option>Running your StartUp/Business</option>
+                             <option>Not Working</option>
+                           </select>
+                       </div>
+                    </div>
+
+                    <fieldset class="form-group my-3">
+                       <div class="row">
+                           <legend class="col-form-label-lg col-3 col-md-2 pt-0 pr-0">Virgin?<span class="input-req-ind">*</span></legend>
+                           <div class="col-md-4">
+                                   <div class="form-check">
+                                       <input class="form-check-input" type="radio" name="user[virgin]" id="gridRadios1" value="Yes" required>
+                                       <label class="form-check-label" for="gridRadios1">
+                                           Yes
+                                       </label>
+                                   </div>
+                                   <div class="form-check">
+                                       <input class="form-check-input" type="radio" name="user[virgin]" id="gridRadios2" value="No" required>
+                                       <label class="form-check-label" for="gridRadios2">
+                                           No
+                                       </label>
+                                   </div>
+                                   <div class="form-check">
+                                       <input class="form-check-input" type="radio" name="user[virgin]" id="gridRadios3" value="Not Specified" required>
+                                       <label class="form-check-label" for="gridRadios3">
+                                           Rather Not Specify
+                                       </label>
+                                   </div>
+                           </div>
+                           <div class="row col-md-6 mx-auto">
+                                   <div class="col-12 mt-4 mt-md-0">
+                                       <label class=" d-flex col-form-label py-0 ">Do you Cook?<span class="input-req-ind">*</span></label>
+                                       <div class="form-check form-check-inline">
+                                           <input class="form-check-input" type="radio" name="user[cook]" value="Yes" required>
+                                           <label class="form-check-label" >Yes</label>
+                                       </div>
+                                       <div class="form-check form-check-inline">
+                                           <input class="form-check-input" type="radio" name="user[cook]" value="No" required>
+                                           <label class="form-check-label">No</label>
+                                       </div>
+                                       <div class="form-check form-check-inline">
+                                           <input class="form-check-input" type="radio" name="user[cook]" value="Ocassionaly" required>
+                                           <label class="form-check-label">Ocassionaly</label>
+                                       </div>
+                                   </div>
+                                   <div class="col-12 mt-4 mt-md-3">
+                                       <label class=" d-flex col-form-label py-0">Source of income?<span class="input-req-ind">*</span></label>
+                                       <div class="form-check form-check-inline">
+                                           <input class="form-check-input" type="radio" name="user[income]" value="Yes" required>
+                                           <label class="form-check-label" >Yes</label>
+                                       </div>
+                                       <div class="form-check form-check-inline">
+                                           <input class="form-check-input" type="radio" name="user[income]" value="No" required>
+                                           <label class="form-check-label" >No</label>
+                                       </div>
+                                       <div class="form-check form-check-inline">
+                                           <input class="form-check-input" type="radio" name="user[income]" value="Not Specified" required>
+                                           <label class="form-check-label" >Rather Not Specify</label>
+                                       </div>
+                               </div>
+                           </div>
+                       </div>
+                    </fieldset>
+
+
+                    <div class="form-row d-flex justify-content-around">
+                        <div class="form-group col-12 col-sm-5">
+                            <label class="col-form-label-lg">Languages Spoken?</label>
+                            <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="addon-wrapping"><i class="fas fa-language"></i></span>
+                                </div>
+                                <input type="text" class="form-control" name="user[languages]" aria-label="Languages" aria-describedby="addon-wrapping">
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6 ">
+                            <label class="col-form-label-lg">Preferred Age Group ?<span class="input-req-ind">*</span></label>
+                            <div class="row">
+                                <div class="col-12 col-sm-6 form-group">                       
+                                    <div class="input-group flex-nowrap">
+                                   <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping">From:</span>
+                                    <select name="user[relInitialAge]" required id="relInitialAge" class="relInitialAge" >
+                                        <option disabled selected value="">..</option>
+                                        <% for ( var i =15; i<75; i++) { %>
+                                            <option><%= i %></option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 form-group">                       
+                                    <div class="input-group flex-nowrap">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="addon-wrapping">To:</span>
+                                            <select name="user[relFinalAge]" id="relFinalAge" class="relFinalAge" required >
+                                                <option disabled selected value="">..</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+
+                    <div style="margin: 15px 0px;" class="hr-theme-slash-2">
+                       <div class="hr-line"></div>
+                       <div class="hr-icon"><i class="fas fa-venus-mars"></i></div>
+                       <div class="hr-line"></div>
+                    </div>
+                    <h3 class="card-title text-center mb-4 py-3 font-weight-bold">Add your recent photos.</h3>
+                    <div id="myID" class="form-group d-flex">
+                        <span id="info" type="button" data-toggle="tooltip" data-placement="left"
+                            title="To upload multiple images,while holding control click on the pictures you want to upload.">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                        <input id="MYIMG" type="file" id="image" name="images" accept="image/*" multiple />
+                    </div>
+
+                    <div style="margin: 15px 0px;" class="hr-theme-slash-2">
+                       <div class="hr-line"></div>
+                       <div class="hr-icon"><i class="fas fa-venus-mars"></i></div>
+                       <div class="hr-line"></div>
+                    </div>
+
+                    <h3 class="card-title text-center mb-4 py-3 font-weight-bold">Link your other Social Media Accounts.</h3>
+
+                    <div class="form-group row">
+                       <span class="i-profile col-1"><i class="fab fa-instagram"></i></span>
+                       <div class="col-9 mx-auto">
+                           <input type="text" name="user[igLink]" class="form-control" placeholder="Link to your Instagram Profile (optional)" >
+                       </div>
+                    </div>
+
+                    <div class="form-group row">
+                       <span class="col-1 i-profile "><i class="fab fa-facebook"></i></span>
+                       <div class="col-9 mx-auto ">
+                           <input type="text" name="user[fbLink]" class="form-control" placeholder="Link to your Facebook Profile (optional)" >
+                       </div>
+                    </div>
+
+                    <div class="form-group row">
+                       <span class="col-1 i-profile "><i class="fab fa-twitter"></i></span>
+                       <div class="col-9 mx-auto ">
+                           <input type="text" name="user[twitterLink]" class="form-control" placeholder="Link to your Twitter Profile (optional)" >
+                       </div>
+                    </div>
+
+                    <div class="row mt-5 mb-4">
+                        <div class="col-12 col-sm-10 mx-auto">
+                            <h4 class="font-italic">Note: Input Fields with "<span class="input-req-ind">*</span>" are Required Inputs.</h4>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="mx-4">
+                            <div class="form-check pt-4">
+                                <input required class="form-check-input" type="checkbox" id="gridCheck1">
+                                By checking this, I agree to the <strong><a href="/tnc" target="_blank" style="text-decoration: none; color: black;">terms and conditions</a></strong>   and privacy policy of <strong>SetItUp</a> </strong> and accept to abide by them at all times. Failure to do so can result in a temporary ban or permanent deletion of my account.
+                                <div class="invalid-feedback">
+                                    You must agree before submitting.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-9 col-md-7 col-lg-6 mx-auto ml-5 my-4 pt-4 d-flex justify-content-between ">
+                        <button type="submit" class = "btn btn-info rounded-0"> Start using <span class="brand-logo">Setitup  &nbsp; <i class="fas fa-door-open"></i></span> </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<ul class="slideshow">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="/scripts/form-validations.js"></script>
+    <script src="/scripts/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<%- include("./partials/header") %>
+<title><%= currentUser.username %> | Likes | SetItUp</title>
+<link rel="stylesheet" href="/stylesheets/likes.css">
+<% if (user.likes.length != 0 ) {%>
+    <div class="jumbotron m-3 rounded-lg shadow-lg w-75 mx-auto">
+        <div class="container text-center ">
+          <div class="row">
+            <div class="col-lg-8 order-2 order-lg-1">
+                <h1 class="display-3">Profiles who've 
+                    </br> 
+                    <span class="highlight-word">Liked you!</span>
+                </h1>
+            </div>
+            <div class="col-lg-4 order-1 order-lg-2 d-flex justify-content-center justify-content-lg-start align-items-lg-start p-0">
+              <img src="/images/venus-mars-solid.svg" alt="" class="img-fluid siu-logo">
+            </div>
+          </div>
+          </div>
+      </div>
+    <div class="container">
+        <% for ( var i=0; i<user.likes.length; i++) { %> 
+            <% if (i%2 === 0 ) { %>
+            <div class="card m-5 border px-auto py-4 pl-md-2 pr-md-5 shadow-lg  text-center text-md-left text-white" style="background-color: #00203fff" >
+                <div class="row no-gutters">
+                    <div class="col-md-4 d-flex justify-content-center">
+                    <img src="<%= user.likes[i].image %>" class="card-img img-fluid myId" alt="...">
+                    </div>
+                    <div class="col-md-8 mx-auto mx-md-0">
+                        <div class="card-body mx-auto mx-md-0">
+                            <h4 class="card-title"><%= user.likes[i].name %></h4>
+                            <div class="dropdown-divider"></div>
+                            <p class="card-text"><span class="lead"><%= user.likes[i].age %> &#8226; <%= user.likes[i].city %> &#8226; <%= user.likes[i].maritalStatus %> &#8226; <%= user.likes[i].relPreference %></span></p>
+                            <% if(user.likes[i].bio.length <= 247) { %>
+                                <p class="card-text"><%= user.likes[i].bio %> </p>
+                            <% } else { %>
+                                <p class="card-text"><%= user.likes[i].bio.substring(0,247)%>...</p>
+                            <% } %>
+                            <div class="row d-flex py-4 justify-content-center justify-content-md-start">
+                                <% if(user.likes[i].likes.indexOf(currentUser._id) === -1) { %>
+                                    <div class="col-4 col-xl-3">
+                                        <form action="/likesPage/<%= user.likes[i]._id %>" method="POST">
+                                            <button class="btn btn-danger rounded-0">Like Back<span class="likeSymbol"><i class="fas fa-thumbs-up"></i></span></button>      
+                                        </form>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="/profile/<%= user.likes[i]._id %>/view" class="btn btn-primary rounded-0">View Profile</a>
+                                    </div>
+                                <% } else { %>
+                                    <% if(currentUser.bothLiked.indexOf(user._id) === -1 ) { %>
+                                        <div class="col-4 col-xl-3">
+                                            <a href="/chat/<%= currentUser._id %>/" class="btn btn-success rounded-0">Chat <i class="fas fa-comment-alt ml-2"></i>  </a>
+                                        </div>
+                                        <div class="col-4">
+                                            <a href="/profile/<%= user.likes[i]._id %>/view" class="btn btn-primary rounded-0">View Profile</a>
+                                        </div>
+                                    <% } else { %>
+                                    <div class="col-6">
+                                        <a href="/profile/<%= user.likes[i]._id %>/view" class="btn btn-primary rounded-0">View Profile</a>
+                                    </div>
+                                <% } %>
+                                <% } %>
+                                
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <% } else { %>
+                <div class="card m-5 border px-auto py-4 pr-md-2 pl-md-5 shadow-lg text-center text-md-left text-dark" style="background-color: mintcream"  >
+                <div class="row no-gutters">
+                    <div class="col-md-8 order-2 order-md-1 mx-auto mx-md-0 ">
+                        <div class="card-body mx-auto mx-md-0">
+                            <h4 class="card-title"><%= user.likes[i].name %></h4>
+                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.466);" class="dropdown-divider"></div>
+                            <p class="card-text"><span class="lead"><%= user.likes[i].age %> &#8226; <%= user.likes[i].city %> &#8226; <%= user.likes[i].maritalStatus %> &#8226; <%= user.likes[i].relPreference %></span></p>
+                            <% if(user.likes[i].bio.length <= 247) { %>
+                                <p class="card-text"><%= user.likes[i].bio %> </p>
+                            <% } else { %>
+                                <p class="card-text"><%= user.likes[i].bio.substring(0,247)%>...</p>
+                            <% } %>
+                            <div class="row d-flex py-4 justify-content-center justify-content-md-start">
+                                <% if(user.likes[i].likes.indexOf(currentUser._id) === -1) { %>
+                                    <div class="col-4 col-xl-3">
+                                        <form action="/likesPage/<%= user.likes[i]._id %>" method="POST">
+                                            <button class="btn btn-outline-danger rounded-0">Like Back<span class="likeSymbol"><i class="fas fa-thumbs-up"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="/profile/<%= user.likes[i]._id %>/view" class="btn btn-outline-primary rounded-0">View Profile</a>
+                                    </div>
+                                <% } else { %>
+                                    <% if(currentUser.bothLiked.indexOf(user._id) === -1 ) { %>
+                                        <div class="col-4 col-xl-3">
+                                            <a href="/chat/<%= currentUser._id %>/" class="btn btn-success  rounded-0">Chat <i class="fas fa-comment-alt ml-2"></i> </a>
+                                        </div>
+                                        <div class="col-4">
+                                            <a href="/profile/<%= user.likes[i]._id %>/view" class="btn btn-primary rounded-0">View Profile</a>
+                                        </div>
+                                    <% } else { %>
+                                    <div class="col-6">
+                                        <a href="/profile/<%= user.likes[i]._id %>/view" class="btn btn-primary rounded-0">View Profile</a>
+                                    </div>
+                                <% } %>                               
+                                 <% } %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 order-1 order-md-2 d-flex justify-content-center">
+                    <img src="<%= user.likes[i].image %>" class="card-img img-fluid myId" alt="...">
+                    </div>
+                </div>
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+<% } else { %>
+    <div class="jumbotron m-3 rounded-lg shadow-lg w-75 mx-auto">
+        <div class="container text-center ">
+          <div class="row">
+            <div class="col-lg-8 order-2 order-lg-1">
+                <h1 class="display-3">No one has 
+        </br> <span class="highlight-word">Liked you yet!</span></h1>
+            </div>
+            <div class="col-lg-4 order-1 order-lg-2 d-flex justify-content-center justify-content-lg-start align-items-lg-start p-0">
+              <img src="/images/venus-mars-solid.svg" alt="" class="img-fluid siu-logo">
+            </div>
+          </div>
+          </div>
+      </div>
+<% } %>
+<%- include("./partials/footer") %>

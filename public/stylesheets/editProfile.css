@@ -1,0 +1,71 @@
+.jumbotron {
+    background-color: white;
+}
+
+.h1 {
+    font-size: 5rem;
+    font-family: 'Pacifico', cursive;
+}
+
+.phone-no {
+    display: flex;
+}
+
+.col-form-label-lg {
+    padding-bottom: 0;
+}
+
+.hr-theme-slash-2 {
+    display: flex;
+}    
+.hr-line {
+    width: 100%;
+    position: relative;
+    margin: 15px;
+    border-bottom: 1px solid rgba(0,0,0,.075);
+}
+.hr-icon {
+    position: relative;
+    top: 8px;
+    color: darkcyan;
+    font-size: 2.5rem;
+}
+
+span.i-profile {
+    padding-top: calc(.375rem + 1px);
+    padding-bottom: calc(.375rem + 1px);
+    margin-bottom: 0;
+    font-size: 18px;
+    max-width: 0.15rem;
+    line-height: 1.5;
+    position: relative;
+    left: 1.85rem;
+    top: 2.75px;
+}
+.brand-logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+}
+
+
+#myID {
+  margin-left: 32%;
+}
+
+#info {
+margin-top: 1%;
+  margin-right: 3%;
+}
+
+#pen-nib {
+    font-size: 17px;
+}
+
+.cameraSymbol {
+    margin-left: 8px;
+    font-size: 1.3rem;
+}
+
+.input-req-ind {
+    color: red;
+}

@@ -1,0 +1,98 @@
+<%- include("./partials/header") %>
+<title><%= currentUser.username %> | Saved | SetItUp </title>
+<link rel="stylesheet" href="/stylesheets/savedUsers.css">
+</head>
+<body>
+    <% if (user.savedUsers.length != 0 ) {%>
+        <div class="jumbotron m-3 rounded-lg shadow-lg w-75 mx-auto">
+            <div class="container text-center ">
+              <div class="row">
+                <div class="col-lg-8 order-2 order-lg-1">
+                    <h1 class="display-3">Your Saved <span class="highlight-word">Profiles!</span></h1>
+                </div>
+                <div class="col-lg-4 order-1 order-lg-2 d-flex justify-content-center justify-content-lg-start align-items-lg-start p-0">
+                  <img src="/images/venus-mars-solid.svg" alt="" class="img-fluid siu-logo">
+                </div>
+              </div>
+              </div>
+        </div>
+        <div class="container">
+            <% for ( var i=0; i<user.savedUsers.length; i++) { %> 
+                <% if (i%2 === 0 ) { %>
+                    <div class="card m-5 border px-auto py-4 pl-md-2 pr-md-5 shadow-lg text-light text-center text-md-left " style="background-color: #00203fff" >
+                    <div class="row no-gutters">
+                        <div class="col-md-4 d-flex justify-content-center">
+                        <img src="<%= user.savedUsers[i].image %>" class="card-img img-fluid myId" alt="...">
+                        </div>
+                        <div class="col-md-8 mx-auto mx-md-0">
+                            <div class="card-body mx-auto mx-md-0">
+                                <h4 class="card-title"><%= user.savedUsers[i].name %></h4>
+                                <div class="dropdown-divider"></div>
+                                <p class="card-text"><span class="lead"><%= user.savedUsers[i].age %> &#8226; <%= user.savedUsers[i].city %> &#8226; <%= user.savedUsers[i].maritalStatus %> &#8226; <%= user.savedUsers[i].relPreference %></span></p>
+                                <% if(user.savedUsers[i].bio.length <= 247) { %>
+                                    <p class="card-text"><%= user.savedUsers[i].bio %> </p>
+                                <% } else { %>
+                                    <p class="card-text"><%= user.savedUsers[i].bio.substring(0,247)%>...</p>
+                                <% } %>
+                                <div class="row d-flex py-4 justify-content-center justify-content-md-start">
+                                    <div class="col-6 col-xl-5">
+                                        <form action="/removeFromSavedPage/<%= user.savedUsers[i]._id%>" method="post">
+                                            <button class="btn btn-danger rounded-0">REMOVE FROM SAVED &nbsp; <i class="far fa-bookmark"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="/profile/<%= user.savedUsers[i]._id %>/view" class="btn btn-primary rounded-0">View Profile</a>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                    </div>
+                <% } else { %>
+                    <div class="card m-5 border px-auto py-4 pr-md-2 pl-md-5 shadow-lg text-center text-md-left text-dark" style="background-color: mintcream"  >
+                    <div class="row no-gutters">
+                        <div class="col-md-8 order-2 order-md-1 mx-auto mx-md-0 ">
+                            <div class="card-body mx-auto mx-md-0">
+                                <h4 class="card-title"><%= user.savedUsers[i].name %></h4>
+                                <div style="border-top: 1px solid rgba(0, 0, 0, 0.466);" class="dropdown-divider"></div>
+                                <p class="card-text"><span class="lead"><%= user.savedUsers[i].age %> &#8226; <%= user.savedUsers[i].city %> &#8226; <%= user.savedUsers[i].maritalStatus %> &#8226; <%= user.savedUsers[i].relPreference %></span></p>
+                                <% if(user.savedUsers[i].bio.length <= 247) { %>
+                                    <p class="card-text"><%= user.savedUsers[i].bio %> </p>
+                                <% } else { %>
+                                    <p class="card-text"><%= user.savedUsers[i].bio.substring(0,247)%>...</p>
+                                <% } %>
+                                <div class="row d-flex py-4 justify-content-center justify-content-md-start">
+                                    <div class="col-6 col-xl-5">
+                                        <form action="/removeFromSavedPage/<%= user.savedUsers[i]._id%>" method="post">
+                                            <button class="btn btn-outline-danger rounded-0">REMOVE FROM SAVED &nbsp; <i class="far fa-bookmark"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="/profile/<%= user.savedUsers[i]._id %>/view" class="btn btn-outline-primary rounded-0">View Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 order-1 order-md-2 d-flex justify-content-center">
+                        <img src="<%= user.savedUsers[i].image %>" class="card-img img-fluid myId" alt="...">
+                        </div>
+                    </div>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+    <% } else { %>
+        <div class="jumbotron m-3 rounded-lg shadow-lg w-75 mx-auto">
+            <div class="container text-center ">
+              <div class="row">
+                <div class="col-lg-8 order-2 order-lg-1">
+                    <h1 class="display-3">You've not Saved </br><span class="highlight-word">any Profile!</span></h1>
+                </div>
+                <div class="col-lg-4 order-1 order-lg-2 d-flex justify-content-center justify-content-lg-start align-items-lg-start p-0">
+                  <img src="/images/venus-mars-solid.svg" alt="" class="img-fluid siu-logo">
+                </div>
+              </div>
+              </div>
+        </div>
+    <% } %>
+<%- include("./partials/footer") %>

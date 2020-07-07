@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><%= user.username %> | Profile | SetItUp</title>
+    <link rel="icon" href="https://res.cloudinary.com/dcimcuqjm/image/upload/v1593546882/Screenshot_97_vadfhb.png"
+        type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+        integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+    <link rel="stylesheet"
+        href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/showProfile.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" href="/stylesheets/footer.css">
+</head>
+
+
+<body class="profile-page ">
+    <nav class="navbar fixed-top navbar-expand-lg bg-dark" color-on-scroll="100" id="sectionsNav">
+        <div class="navbar-translate">
+            <a class="navbar-brand" href="/home/<%= currentUser._id %>">
+                <i class="fa fa-venus-mars biggy" aria-hidden="true"></i>
+                <span class="biggy" id="brand">Setitup</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse">
+            <% if(currentUser) { %>
+            <ul class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/explore/<%= currentUser._id %>"><i
+                            class="fas fa-compass button1"></i>Explore <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/likes/<%= currentUser._id %>"><i class="fas fa-heart button1"></i>Likes
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/saved/<%=currentUser._id%>"><i class="fas fa-bookmark button1"></i>Saved
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/chat/<%= currentUser._id %>"><i class="fas fa-comment-alt button1"></i>Chat</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/about"><i class="fas fa-users button1"></i>About Us</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="far fa-user-circle  button1"></i><span class="drp"><%= currentUser.username %></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        <a href="/profile/<%= currentUser._id %>/view" class="dropdown-item">
+                            <i class="fas fa-user-circle button1"></i>Profile
+                        </a>
+                        <a href="/settings/<%= currentUser._id %>" class="dropdown-item">
+                            <i class="fas fa-sliders-h button1"></i>Settings
+                        </a>
+                        <a href="/support" class="dropdown-item">
+                            <i class="fas fa-question-circle button1"></i>Support
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout/<%= currentUser._id %>"><i
+                            class="fas fa-sign-out-alt button1"></i>Logout</a>
+                </li>
+                <% } else { %>
+                <li class="nav-item active">
+                    <a class="nav-link active" href="/login"><i class="fas fa-sign-in-alt button1"></i>Login</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link active" href="/getting-started"><i
+                            class="fas fa-user-plus button1"></i>Signup</a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <% if(error && error.length > 0 ) { %>
+        <div class="row d-flex justify-content-between m-2">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="width: 100%;">
+                <%= error %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <% } %>
+        <% if(success && success.length > 0 ) { %>
+        <div class="row d-flex justify-content-between m-2">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 100%;">
+                <%= success %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+
+        <% } %>
+    </div>
+    <div class="main main-raised">
+        <div class="profile-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <div class="profile">
+                            <div class="avatar">
+                                <img src="<%= user.image %>" alt="Circle Image"
+                                    class="img-raised rounded-circle img-fluid">
+                            </div>
+                            <div class="name pt-5">
+                                <h3 class="title">
+                                    <%=user.name %>
+                                </h3>
+                                <h6 style="text-transform: none;">@
+                                    <%=user.username %>
+                                </h6>
+                                <% if (user.fbLink.length>0) { %>
+                                <a href="<%= user.fbLink %>" class="btn btn-just-icon btn-link btn-dribbble"><i
+                                        class="fab fa-facebook"></i></a>
+                                <% } %>
+                                <% if (user.twitterLink.length>0) { %>
+                                <a href="<%= user.twitterLink %>" class="btn btn-just-icon btn-link btn-twitter"><i
+                                        class="fab fa-twitter"></i></a>
+                                <% } %>
+                                <% if (user.igLink.length>0) { %>
+                                <a href="<%= user.igLink %>" class="btn btn-just-icon btn-link btn-dribbble"><i
+                                        class="fab fa-instagram"></i></a>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="description text-center">
+                    <p>
+                        <%= user.bio %>
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <div class="profile-tabs">
+                            <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#info" role="tab" data-toggle="tab">
+                                        <i class="material-icons">info</i> Info
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#photos" role="tab" data-toggle="tab">
+                                        <i class="material-icons">photo</i> Photos
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content tab-space pb-3">
+                    <div class="tab-pane active text-center gallery pb-3" id="info">
+                        <div class="row">
+                            <div class="col-12 col-lg-5 ml-auto">
+                                <div class="my-4 pb-3">
+                                    <div class="card shadow bg-dark rounded pb-3">
+                                        <div class="card-body col-12 px-4 py-0 px-md-0 mx-auto text-light">
+                                            <div class="card-header">
+                                                <h3 class="title">Basic Info</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row d-flex justify-content-between">
+                                                    <div class="col-5">
+                                                        <h5 class="card-title">Age</h5>
+                                                        <p class="card-text"><i class="fas fa-birthday-cake"></i>
+                                                            <%= user.age %>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <h5 class="card-title">City</h5>
+                                                        <p class="card-text"><i class="fas fa-map-marker"></i>
+                                                            <%= user.city %>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-5">
+                                                    <div class="col-9 mx-auto">
+                                                        <h5 class="card-title">Marital Status</h5>
+                                                        <p class="card-text">
+                                                            <%= user.maritalStatus %>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row d-flex justify-content-around mt-5">
+                                                    <div class="col-5">
+                                                        <h5 class="card-title">
+                                                            <%= user.gender %>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <h5 class="card-title">
+                                                            <%= user.relPreference %>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card shadow bg-success rounded my-5 ">
+                                    <div class="card-body col-12 px-4 py-0 px-md-0 mx-auto text-light ">
+                                        <div class="card-header">
+                                            <h3 class="title">Some Additional Info</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-9 mx-auto">
+                                                    <h5 class="card-title mb-1">Currently </h5>
+                                                    <p class="card-text">
+                                                        <%= user.currently%>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row d-flex justify-content-between mt-4">
+                                                <% if (user.languages.length>0) { %>
+                                                <div class="col-6">
+                                                    <h5 class="card-title mb-1">Languages</h5>
+                                                    <p class="card-text">
+                                                        <%= user.languages%>
+                                                    </p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <h5 class="card-title mb-1">Virgin ?</h5>
+                                                    <p class="card-text">
+                                                        <%= user.virgin %>
+                                                    </p>
+                                                </div>
+                                                <% } else { %>
+                                                <div class="col-9 mx-auto">
+                                                    <h5 class="card-title mb-1">Virgin ?</h5>
+                                                    <p class="card-text">
+                                                        <%= user.virgin %>
+                                                    </p>
+                                                </div>
+                                                <% }%>
+                                            </div>
+                                            <% if (user.nickname.length>0) { %>
+                                            <div class="row mt-4">
+                                                <div class="col-9 mx-auto">
+                                                    <h5 class="card-title mb-1 mb-1">Nickname </h5>
+                                                    <p class="card-text">
+                                                        <%= user.nickname%>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <% } %>
+                                            <div class="row d-flex justify-content-between mt-4">
+                                                <div class="col-6">
+                                                    <% if (user.income.length>0) { %>
+                                                    <h5 class="card-title mb-1">Has a Source of income ? </h5>
+                                                    <p class="card-text">
+                                                        <%= user.income%>
+                                                    </p>
+                                                    <% } else { %>
+                                                    <h5 class="card-title mb-1">Has a Source of income ? </h5>
+                                                    <p class="card-text">Not Specified</p>
+                                                    <% } %>
+                                                </div>
+                                                <div class="col-6">
+                                                    <% if (user.cook.length>0) { %>
+                                                    <% if (user.gender==="Male") { %>
+                                                    <h5 class="card-title mb-1">Does he cook ?</h5>
+                                                    <p class="card-text">
+                                                        <%= user.cook %>
+                                                    </p>
+                                                    <% } else if (user.gender==="Female") { %>
+                                                    <h5 class="card-title mb-1">Does she cook ?</h5>
+                                                    <p class="card-text">
+                                                        <%= user.cook %>
+                                                    </p>
+                                                    <% } else { %>
+                                                    <h5 class="card-title mb-1">Does the person cook ?</h5>
+                                                    <p class="card-text">
+                                                        <%= user.cook %>
+                                                    </p>
+                                                    <% } %>
+                                                    <% } else { %>
+                                                    <% if(user.gender==="Male") { %>
+                                                    <h5 class="card-title mb-1">Does he cook ?</h5>
+                                                    <p class="card-text">Not Specified</p>
+                                                    <% } else if (user.gender==="Female") { %>
+                                                    <h5 class="card-title mb-1">Does she cook ?</h5>
+                                                    <p class="card-text">Not Specified</p>
+                                                    <% } else { %>
+                                                    <h5 class="card-title mb-1">Does the person cook ?</h5>
+                                                    <p class="card-text">Not Specified</p>
+                                                    <% } %>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-5 mr-auto">
+                                <div class="my-4 pb-3">
+                                    <div class="card shadow bg-danger rounded pb-3 ">
+                                        <div class="card-body col-12 px-4 py-0 px-md-0 mx-auto text-light ">
+                                            <div class="card-header">
+                                                <h3 class="title">Dating Preferences</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-9 mx-auto">
+                                                        <h5 class="card-title mb-1">Looking for ? </h5>
+                                                        <% if (user.relType === "Anything will do") { %>
+                                                        <p class="card-text">Anything from :</p>
+                                                        <ul class="m-0">
+                                                            <li>
+                                                                <p class="card-text">Short Term</p>
+                                                            </li>
+                                                            <li>
+                                                                <p class="card-text">Long Term</p>
+                                                            </li>
+                                                            <li>
+                                                                <p class="card-text">Hookups</p>
+                                                            </li>
+                                                            <li>
+                                                                <p class="card-text">Casual Flings</p>
+                                                            </li>
+                                                            <li>
+                                                                <p class="card-text">One Night Stands</p>
+                                                            </li>
+                                                        </ul>
+                                                        <% } else { %>
+                                                        <p class="card-text">
+                                                            <%= user.relType %>
+                                                        </p>
+                                                        <% } %>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-3">
+                                                    <div class="col-9 mx-auto">
+                                                        <h5 class="card-title mb-1">Preferred Age Group </h5>
+                                                        <p class="card-text"><%= user.relAgeGroup %></p>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-3">
+                                                    <div class="col-12 mx-auto">
+                                                        <h5 class="card-title mb-1">Short Distance or Long Distance ?
+                                                        </h5>
+                                                        <p class="card-text">
+                                                            <%= user.relDistance %>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-3">
+                                                    <div class="col-12 mx-auto">
+                                                        <h5 class="card-title mb-1">Up for Live In ?</h5>
+                                                        <% if (user.liveIn == "--Not Specified--") { %>
+                                                        <p class="card-text">Not Specified</p>
+                                                        <% } else { %>
+                                                        <p class="card-text">
+                                                            <%= user.liveIn %>
+                                                        </p>
+                                                        <% } %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card shadow bg-info rounded my-5 ">
+                                    <div class="card-body col-12 px-4 py-0 px-md-0 mx-auto text-light ">
+                                        <div class="card-header">
+                                            <h3 class="title">
+                                                <%= user.firstName %>'s Other Accounts</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <% if (user.fbLink.length>0) { %>
+                                            <div class="row d-flex justify-content-center my-3">
+                                                <div class="col-2 acc-icon"><i class="fab fa-facebook"></i></div>
+                                                <div class="col-5 "><a class="acc-link card-title"
+                                                        href="<%= user.fbLink %>">Facebook</a></div>
+                                            </div>
+                                            <% } %>
+                                            <% if (user.igLink.length>0) { %>
+                                            <div class="row d-flex justify-content-center my-3">
+                                                <div class="col-2 acc-icon"><i class="fab fa-instagram"></i></div>
+                                                <div class="col-5 "><a class="acc-link card-title"
+                                                        href="<%= user.igLink %>">Instagram</a></div>
+                                            </div>
+                                            <% } %>
+                                            <% if (user.twitterLink.length>0) { %>
+                                            <div class="row d-flex justify-content-center my-3">
+                                                <div class="col-2 acc-icon"><i class="fab fa-twitter"></i></div>
+                                                <div class="col-5 "><a class="acc-link card-title"
+                                                        href="<%= user.twitterLink %>">Twitter</a></div>
+                                            </div>
+                                            <% } %>
+                                            <% if ( ((user.fbLink.length==0) && (user.igLink.length==0)) && (user.twitterLink.length==0)) { %>
+                                            <div class="row d-flex justify-content-center my-3">
+                                                <div class="col-7 ">
+                                                    <div class="acc-link card-title" href="javascript:;">No Account
+                                                        Links Provided</div>
+                                                </div>
+                                            </div>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% if(currentUser && user._id.equals(currentUser._id)) {%>
+                        <div class="row d-flex justify-content-center pb-4">
+                            <a href="/profile/<%= user._id %>/edit" class="btn btn-lg btn-rose">Edit Profile</a>
+                        </div>
+                        <% } else { %>
+                        <div class="row d-flex justify-content-center pb-4">
+                            <div class="col-6 col-md-3">
+                                <% var item = user._id%>
+                                <% var index = currentUser.savedUsers.indexOf(item); %>
+                                <% if (index === -1) { %>
+                                <form action="/saved/<%= user._id%>" method="post">
+                                    <button class="btn btn-lg btn-rose m-2">SAVE &nbsp; <i
+                                            class="fa fa-bookmark"></i></button>
+                                    <span id="info" type="button" data-toggle="tooltip" data-placement="right"
+                                        title="Only you can see your saved profiles.">
+                                        <i class="fas fa-info-circle icon"></i>
+                                    </span>
+                                </form>
+                                <% } else { %>
+                                <form action="/removeFromSaved/<%= user._id%>" method="post">
+                                    <button class="btn btn-lg btn-rose m-2">REMOVE FROM SAVED &nbsp; <i
+                                            class="far fa-bookmark"></i></button>
+                                </form>
+                                <% } %>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <form action="/likes/<%= user._id %>" method="POST">
+                                    <button type="submit" class="btn btn-lg btn-rose m-2">
+                                        <%= button.value %>
+                                        <% if (button.value === "Like") { %>
+                                        <span class="likeSymbol"><i class="fas fa-thumbs-up"></i></span>
+                                        <% } %>
+                                    </button>
+                                    <% if (button.value === "Like") { %>
+                                    <span id="info" type="button" data-toggle="tooltip" data-placement="right"
+                                        title="When you like someone, they will know that they have been liked by you.">
+                                        <i class="fas fa-info-circle icon"></i>
+                                    </span>
+                                    <% } %>
+                                </form>
+                            </div>
+                        </div>
+                        <% } %>
+                        <div class="row d-flex justify-content-center pb-4">
+                        </div>
+                    </div>
+                    <div class="tab-pane text-center gallery" id="photos">
+                        <div class="row w-75 mx-auto d-flex justify-content-center ">
+                            <% if (user.images.length==0) {%>
+                            <h2 class="title my-5">No Pictures Uploaded.</h2>
+                            <% } %>
+                            <% user.images.forEach(function (img) { %>
+                            <div class="col-12 col-md-6">
+                                <div class="card shadow-lg bg-white rounded mt-5">
+                                    <img class="card-img mb-0" style="width:100%; height: 100%; object-fit: cover;"
+                                        src="<%= img.url %>">
+                                </div>
+                            </div>
+                            <% }); %>
+                        </div>
+                        <% if(currentUser && user._id.equals(currentUser._id)) {%>
+                        <div class="row d-flex justify-content-center pb-4">
+                            <a href="/profile/<%= user._id %>/edit#photos" class="btn btn-lg btn-rose">Edit Profile
+                                Pictures</a>
+                        </div>
+                        <% } else { %>
+                        <div class="row d-flex justify-content-center pb-4">
+                            <div class="col-6 col-md-3">
+                                <% var item = user._id%>
+                                <% var index = currentUser.savedUsers.indexOf(item); %>
+                                <% if (index === -1) { %>
+                                <form action="/saved/<%= user._id%>" method="post">
+                                    <button class="btn btn-lg btn-rose m-2">SAVE &nbsp; <i
+                                            class="fa fa-bookmark"></i></button>
+                                    <span id="info" type="button" data-toggle="tooltip" data-placement="right"
+                                        title="Only you can see your saved profiles.">
+                                        <i class="fas fa-info-circle icon"></i>
+                                    </span>
+                                </form>
+                                <% } else { %>
+                                <form action="/removeFromSaved/<%= user._id%>" method="post">
+                                    <button class="btn btn-lg btn-rose m-2">REMOVE FROM SAVED &nbsp; <i
+                                            class="far fa-bookmark"></i></button>
+                                </form>
+                                <% } %>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <form action="/likes/<%= user._id %>" method="POST">
+                                    <button type="submit" class="btn btn-lg btn-rose"><%= button.value %>
+                                        <span class="likeSymbol"><i class="fas fa-thumbs-up"></i></span>
+                                    </button>
+                                    <% if (button.value === "Like") { %>
+                                    <span id="info" type="button" data-toggle="tooltip" data-placement="right"
+                                        title="When you like someone, they will know that they have been liked by you.">
+                                        <i class="fas fa-info-circle icon"></i>
+                                    </span>
+                                    <% } %>
+                                </form>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer ">
+        <div class="container-fluid footer-content">
+            <div class="row">
+                <div class="col-12 col-md-3 ">
+                    <img class="mb-2"
+                        src="https://res.cloudinary.com/dcimcuqjm/image/upload/v1592807748/Screenshot_89_p19yzz.png"
+                        alt="" width="210" height="100" class="footer-content">
+                    <div class="share-button" id="share">
+                        <span class="font-weight-bolder"><i class="fas fa-share-alt mr-1"></i> Share</span>
+                        <a href="http://www.facebook.com/sharer.php?u=https://setitupcorp.herokuapp.com" target="_blank"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/?text=https://setitupcorp.herokuapp.com"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://twitter.com/share?url=https://setitupcorp.herokuapp.com" target="_blank"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://setitupcorp.herokuapp.com"
+                            target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <small class="d-block mb-3 text-muted footer-content mt-3" id="copyright">&copy; SetItUp
+                        2020</small>
+                </div>
+                <div class=" col-6 col-md">
+                    <h5>CONDITIONS</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a href="/privacy" class="footer-content">Privacy</a></li>
+                        <li><a href="/termsandconditions" class="footer-content">Terms</a></li>
+                        <li><a href="/guidelines" class="footer-content">Community Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>FOLLOW</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a href="https://www.instagram.com/setitup_corp/" class="footer-content">Instagram</a></li>
+                        <li><a href="https://github.com/Setitup-corp" class="footer-content">Github</a></li>
+                        <li><a href="https://www.facebook.com/setitup.corp.1" class="footer-content">Facebook</a></li>
+                        <li><a href="https://twitter.com/Setitup6" class="footer-content">Twitter</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>CONTACT</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a href="/support" class="footer-content">Support</a></li>
+                        <li><a href="/safety" class="footer-content">Safety Tips</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+        crossorigin="anonymous"></script>
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
+    <script src="/scripts/showProfile.js"></script>
+</body>
+
+</html>

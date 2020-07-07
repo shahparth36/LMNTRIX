@@ -1,0 +1,29 @@
+#font {
+    font-family: 'Pacifico', cursive;
+}
+
+.biggy {
+    font-size: 1.45em;
+}
+
+.dropdown-menu {
+    background-color: black;
+    color: white;
+}
+
+.dropdown-item {
+    color: white;
+}
+
+.Button1 {
+    margin-right: 5px;
+}
+
+.navButton {
+    margin-right: 7px;
+}
+
+#big {
+    font-size: 1.2rem;
+}
+    

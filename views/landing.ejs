@@ -1,0 +1,84 @@
+<html>
+
+    <head>
+        <title>Welcome | SetItUp</title>
+    <link rel="icon" href="https://res.cloudinary.com/dcimcuqjm/image/upload/v1593546882/Screenshot_97_vadfhb.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"><link rel="stylesheet" href="/stylesheets/profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/landing.css">
+    
+    </head>
+    
+    <body>
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Please Note</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>For better User experience, we recommend our mobile users to view & use this website in Desktop view. </p>
+                        <p>
+                            <strong>Instructions to enable desktop view on mobile: </strong>
+                        <ul>
+                            <li>Go to <i class="fas fa-ellipsis-v pl-1 pr-1"></i> which is on top right of your google chrome browser.</li>
+                            <li>Enable the checkbox named as desktop site which you see after clicking on the above symbol.</li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <div class="px-5 my-5" id = "alert">
+        <% if(error && error.length > 0 ) { %>
+        <div class="row d-flex justify-content-between m-2">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="width: 100%;">
+                <%= error %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <% } %>
+        <% if(success && success.length > 0 ) { %>
+        <div class="row d-flex justify-content-between m-2">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 100%;">
+                <%= success %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    
+        <% } %>
+    </div>
+	<div class="container" id="landing-header">
+		<div class="row">
+			<div class="col-lg-12">
+                <h1 class="display-3">Welcome
+                    to </br> <span class="highlight-word">Setitup <i class="fa fa-venus-mars"></i></span></h1>
+                    <br>
+				<a href="/login" type="button" class=" btn btn-outline-danger  btn-lg">GET STARTED <i class="fas fa-heart"></i></a>
+			</div>
+		</div>
+	</div>
+	<ul class="slideshow">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5edb6bcd6bc39dbb"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src = "/scripts/landing.js"></script>
+</body>
+</html>

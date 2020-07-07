@@ -1,0 +1,21 @@
+
+img .explore-users-img { 
+width:100%; 
+height:100%; 
+object-fit: cover; 
+} 
+
+.siu-logo {
+    max-width: 100%;
+    height: auto;
+}
+
+.card-btn {
+position: relative;
+bottom: 1px;
+width: 50%;
+}
+
+.filter {
+    text-decoration: none!important;
+}

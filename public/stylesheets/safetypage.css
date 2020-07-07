@@ -1,0 +1,112 @@
+.body{
+    font-weight:100;	
+    margin-bottom:20px;
+    
+}
+.heaad{
+    color:white;
+    background: black;
+
+}
+
+#riskone{
+    display:none;
+}
+#risktwo{
+    display:none;
+}
+#riskthree{
+    display:none;
+}
+#riskfour{
+    display:none;
+}
+#riskfive{
+    display:none;
+}
+#risk6{
+    display:none;
+}
+#riskseven{
+    display:none;
+}
+#risk8{
+    display:none;
+}
+#risknine{
+    display:none;
+}
+#riskten{
+    display:none;
+}
+#btnone{
+    display:none;
+    margin-left:8px;
+}
+#btntwo{
+    display:none;
+    margin-left:8px;
+}
+#btnthree{
+    display:none;
+    margin-left:8px;
+}
+#btnfour{
+    display:none;
+    margin-left:8px;
+}
+#btnfive{
+    display:none;
+    margin-left:8px;
+}
+#btn6{
+    display:none;
+    margin-left:8px;
+}
+#btnseven{
+    display:none;
+    margin-left:8px;
+}
+#btn8{
+    display:none;
+    margin-left:8px;
+}
+#btnnine{
+    display:none;
+    margin-left:8px;
+}
+#btnten{
+    display:none;
+    margin-left:8px;
+}
+.riskcont{
+    font-size:1.3em;
+
+    
+}
+
+#safetytips{
+    background:#e6ffff;
+    text-align:center
+}
+.backa{
+    color:white;
+    background: black;
+    border:2px solid ;
+    border-radius:5px;
+}
+.intro{
+    font-size:1.3em;
+}
+#youtubeimage{
+    
+    margin-bottom:30px;
+    width:50%;
+}
+#aboveimg{
+    margin-top:8px;
+    font-size:1.1em;
+}
+.pas{
+    text-decoration:underline;
+}

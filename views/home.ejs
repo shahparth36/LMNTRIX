@@ -1,0 +1,144 @@
+ <%- include("./partials/header") %>
+    <title><%= currentUser.username %> | Home | SetItUp </title>
+    <link rel="stylesheet" href="/stylesheets/home.css">
+    <link rel="stylesheet" href="/stylesheets/homeShareButton.css">
+</head>
+<body>  
+  
+<div class="jumbotron m-3 rounded-lg shadow-lg w-75 mx-auto">
+  <div class="container text-center ">
+    <div class="row">
+      <div class="col-lg-8 order-2 order-lg-1">
+          <h1 class="display-3 home-header">Welcome
+to </br> <span class="highlight-word">Setitup</span></h1>
+  <p class="lead mt-5">Your final stop to find a <strong style="font-weight: 600;">Perfect Match</strong>.We set you up according to your Preferences, be it for long term or just a night.We support every <strong style="font-weight: 600;">Community</strong> and truly believe everyone has the right to find their perfect someone. </p>
+  <div style="border-top: 1px solid #47494863;" class="dropdown-divider w-75 mx-auto"></div>    
+  <span class="text-left d-inline-block">
+    <p  class="text-dark lead my-3 social-link">Visit us on :
+      <a style="font-size: 2rem; color: #999999;" class="m-3 " href="https://www.instagram.com/setitup_corp/" role="button"><i class="fab fa-instagram"></i></a>
+      <a style="font-size: 2rem; color: #999999;" class="m-3 "href="https://github.com/Setitup-corp" role="button"><i class="fab fa-github"></i></a>
+      <a style="font-size: 2rem; color: #999999;" class="m-3 "href="https://www.facebook.com/setitup.corp.1" role="button"><i class="fab fa-facebook"></i></a>
+      <a style="font-size: 2rem; color: #999999;" class="m-3 "href="https://twitter.com/Setitup6" role="button"><i class="fab fa-twitter"></i></a>
+    </p>
+        </span>
+        
+        <div class="share-button-jumbotron mx-auto mt-3">
+          <span class="font-weight-bolder text-white"><i class="fas fa-share-alt mr-1"></i>  Share</span>
+          <a href="http://www.facebook.com/sharer.php?u=https://setitupcorp.herokuapp.com" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://wa.me/?text=https://setitupcorp.herokuapp.com"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://twitter.com/share?url=https://setitupcorp.herokuapp.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://setitupcorp.herokuapp.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>         
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 d-flex justify-content-center justify-content-lg-start align-items-lg-start p-0">
+        <img src="/images/venus-mars-solid.svg" alt="" class="img-fluid siu-logo">
+      </div>
+    </div>
+
+ 
+    </div>
+</div>
+
+<% if(data.length === 0) { %>
+  <div class="shadow-lg border mt-5">
+    <div class="container-fluid p-0 ">
+          <div id="myCarousel" class="carousel slide carousel-fade " data-interval="false">
+             <div class="card ">
+                 <div class="col-12 col-lg-10 mx-auto">
+                     <div class="carousel-inner p-5 p-lg-3">
+                            <div class="carousel-item active">
+                                <div class="mask flex-center">
+                                    <div class="row align-items-center d-flex justify-content-between">
+                                        <div class="col-lg-5 col-12 order-2 order-lg-1 m-2 m-lg-4 text-center text-lg-left">
+                                            <h4 class="">No Users Matched</h4>
+                                            <div class="dropdown-divider m-4 m-lg-2"></div>
+                                            <p class="text-white">DONT WORRY ONE DAY YOU ARE GONNA MEET SOMEONE WHO APPRECIATES YOU FOR WHO YOU ARE ,CHECKOUT THE EXPLORE PAGE FOR NOW!</p>
+                                            <a class="my-4" href="/explore/<%= currentUser._id %>">Go to Explore Page</a>
+                                        </div>
+                                    </div>
+                
+                                </div>
+                            </div>
+                     </div>
+                  </div>
+              </div>
+         </div>   
+        </div>
+  </div>
+<% } else { %>
+
+  <div class="shadow-lg rounded-lg  jumbotron mx-auto mt-5 text-dark px-0 pb-0 ">
+    <div class="display-3 text-center mb-5">
+     Your Top Matches <i class="fas fa-hand-holding-heart mb-1 ml-3"></i> 
+    </div>
+    <div class="shadow-lg border pb-0">
+      <div class="container-fluid p-0 ">
+            <div id="myCarousel" class="carousel slide carousel-fade " data-interval="false">
+              <div class="card ">
+                  <div class="col-12 col-lg-10 mx-auto">
+                      <div class="carousel-inner p-5 p-lg-3">
+                        <% for (var i=0; i<data.length; i++) { %>
+                        <% if (i === 0) { %>
+                          <div class="carousel-item active">
+                            <div class="mask flex-center">
+                                <div class="row align-items-center d-flex justify-content-between">
+                                    <div class="col-lg-5 col-12 order-2 order-lg-1 m-2 m-lg-4 text-center text-lg-left">
+                                          <h4><%= data[i].userData.name %></h4>
+                                          <p><%= data[i].userData.age %> &#8226; <%= data[i].userData.city %> &#8226; <span class="badge badge-success badge-pill p-2"><%= data[i].percentage %>% Match</span></p>
+                                          <div class="dropdown-divider m-4 m-lg-2"></div>
+                                          <% if (data[i].userData.bio.length <= 250 ) { %>
+                                          <p class="text-white"><%= data[i].userData.bio %> </p>
+                                          <% } else { %>
+                                            <p class="text-white"><%= data[i].userData.bio.substring(0,247) %>...</p>
+                                          <% } %>                                            
+                                          <a class="my-4" href="/profile/<%= data[i].userData._id %>/view">VIEW PROFILE</a>
+                                    </div>
+                                    <div class="col-lg-5 col-7 order-1 order-lg-2 m-2 m-lg-4 mx-auto ">
+                                        <div class="img mt-3 d-flex justify-content-center">
+                                            <img class=" rounded-lg -lg "  style="object-fit: contain;height: 100%;" src="<%= data[i].userData.image %> " alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                          <% } else { %>
+                            <div class="carousel-item">
+                              <div class="mask flex-center">
+                                  <div class="row align-items-center d-flex justify-content-between">
+                                      <div class="col-lg-5 col-12 order-2 order-lg-1 m-2 m-lg-4 text-center text-lg-left">
+                                            <h4><%= data[i].userData.name %></h4>
+                                            <p><%= data[i].userData.age %> &#8226; <%= data[i].userData.city %> &#8226; <span class="badge badge-success badge-pill p-2"><%= data[i].percentage %>% Match</span> </p>
+                                            <div class="dropdown-divider m-4 m-lg-2"></div>
+                                            <% if (data[i].userData.bio.length <= 250 ) { %>
+                                            <p class="text-white"><%= data[i].userData.bio %> </p>
+                                            <% } else { %>
+                                              <p class="text-white"><%= data[i].userData.bio.substring(0,247) %>...</p>
+                                            <% } %>                                            
+                                            <a class="my-4" href="/profile/<%= data[i].userData._id %>/view">VIEW PROFILE</a>
+                                      </div>
+                                      <div class="col-lg-5 col-7 order-1 order-lg-2 m-2 m-lg-4 mx-auto ">
+                                          <div class="img mt-3 d-flex justify-content-center">
+                                              <img class=" rounded-lg -lg "  style="object-fit: contain;height: 100%;" src="<%= data[i].userData.image %> " alt="">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+                          <% } %>
+                        <% } %>
+                      </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev ml-3 ml-lg-5 rounded-circle" href="#myCarousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> 
+                <a class="carousel-control-next mr-3 mr-lg-5 rounded-circle" href="#myCarousel" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>                 
+          </div>   
+      </div>
+    </div>
+
+</div>
+<% } %> 
+
+
+ 
+  <%- include("./partials/footer") %>
+  

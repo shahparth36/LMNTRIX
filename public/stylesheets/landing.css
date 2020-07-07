@@ -1,0 +1,94 @@
+.container
+{
+	text-align:center;
+
+
+}
+
+body
+{
+	background-color: black;
+}
+h1{
+	text-align:center;
+	color:white;
+	font-size:80px;
+	font-weight:300;
+	font-family: 'Shadows Into Light', cursive;
+}
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 30vh;
+}
+#landing-header h1 {
+  color: #fff;
+}
+.slideshow { 
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 30s linear infinite; 
+}
+.slideshow li:nth-child(1) { 
+  background-image: url(https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(https://images.pexels.com/photos/285938/pexels-photo-285938.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  animation-delay: 5s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(https://images.pexels.com/photos/792777/pexels-photo-792777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(https://images.pexels.com/photos/1824684/pexels-photo-1824684.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  animation-delay: 15s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(https://images.pexels.com/photos/1449670/pexels-photo-1449670.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
+  animation-delay: 20s; 
+}
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  6% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  12% {
+    opacity: 1
+  }
+  18% {
+    opacity: 0
+  }
+}
+
+#alert {
+  z-index: 1!important;
+}
+
+.highlight-word{
+  font-family: Pacifico, cursive;
+}

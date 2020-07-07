@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://res.cloudinary.com/dcimcuqjm/image/upload/v1593546882/Screenshot_97_vadfhb.png"
+        type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/sharebutton.css">
+    <link rel="stylesheet" href="/stylesheets/guidelines.css">
+    <title>Community Guidelines | SetItUp</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black; z-index: 1;">
+        <a class="navbar-brand" href="/home/<%= currentUser._id %>">
+            <i class="fa fa-venus-mars biggy" aria-hidden="true"></i>
+            <span class="biggy" id="font">Setitup</span>
+        </a>
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="navbar-toggler-icon"><span></span><span></span><span></span></div>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <% if(currentUser) { %>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/explore/<%= currentUser._id %>"><i
+                            class="fas fa-compass navButton"></i>Explore <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/likes/<%= currentUser._id %>"><i class="fas fa-heart navButton"></i>Likes
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/saved/<%= currentUser._id %>"><i class="fas fa-bookmark navButton"></i>Saved
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/chat/<%= currentUser._id %>"><i
+                            class="fas fa-comment-alt navButton"></i>Chat</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/about"><i class="fas fa-users navButton"></i>About Us</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-user-circle navButton" id="big"></i><span
+                            class="drp"><%= currentUser.username %></span>
+                    </a>
+                    <div id="drp" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item drp" href="/profile/<%= currentUser._id %>/view"><i
+                                class="far fa-user-circle Button1"></i>Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item drp" href="/settings/<%= currentUser._id %>"><i
+                                class="fas fa-sliders-h Button1"></i>Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item drp" href="/support"><i
+                                class="fas fa-question-circle Button1"></i>Support</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/logout/<%= currentUser._id %>"><i
+                            class="fas fa-sign-out-alt navButton"></i>Logout</a>
+                </li>
+                <% } else { %>
+                <a class="nav-link active" href="/login"><i class="fas fa-sign-in-alt"></i>Login</a>
+                <a class="nav-link active" href="/getting-started"><i class="fas fa-user-plus"></i>Signup</a>
+            </ul>
+            <% } %>
+        </div>
+    </nav>
+    <div class="container my-5 border shadow-lg py-5 px-4">
+        <h1 class="title text-center display-4">Community Guidelines</h1>
+        <div class="class12345">
+            <hr>
+        </div>
+        <p> We expect everyone on SetItUp to treat each other respectfully, with kindness and compassion. We do not tolerate
+            hateful, hurtful, or harassing content on SetItUp. &nbsp;We consider unsolicited sexual content and messages to
+            be sexual harassment. <strong> We don't like jerks, so please don't be a jerk.&nbsp;</strong></p>
+        <p> Here's the thing. We want you to think about this one rule: <em>treat online interactions as you would even if
+                they were offline.&nbsp;</em></p>
+        <ul>
+            <li>When sending messages, consider what you would say to someone who you just met at a club or coffee
+                shop.&nbsp;</li>
+            <li>When uploading photos, consider if the same pose or outfit would be appropriate in public.&nbsp;</li>
+            <li>When creating a profile, consider if you'd feel comfortable having a family member or friend read it.&nbsp;
+            </li>
+        </ul>
+        <p> SetItUp is not a magical place where people want to hear about your sexual fantasies out of the blue, or where
+            you can be mean to someone with no repercussions. Treat it as a place where you can talk to other humans about
+            things that matter to you both, and remember that the best way to make a meaningful connection with someone is
+            to treat them well.</p>
+        <p> <br> Below are our community guidelines and moderation standards. If you see anyone who violates these
+            guidelines, please report&nbsp;them to us
+            right away.</p>
+        <h3 id="harassing" class="weight">Harassment</h3>
+        <div class="class12345">
+            <hr>
+        </div>
+        <p> If you wouldn’t say it to someone you just met in person, you shouldn’t be saying it online. Messages should be
+            respectful, appropriate, honest, and kind. We don't tolerate "negging" (insulting statements disguised as
+            "flirting") or other rude behavior. This expectation also includes interactions with SetItUp staff. People found
+            to be sending harassing messages will be banned.</p>
+        <p> Additionally, profile content itself should also be respectful and kind. Profile essays which are found to be
+            overly combative or hateful may be removed or may even result in your profile being banned.</p>
+        <h3 id="sexual" class="weight">Sexual Harassment / Explicit Sexual Content</h3>
+        <div class="class12345">
+            <hr>
+        </div>
+        <p> Exposing other people to your sexual fantasies without their consent is rude and inappropriate, and it's not
+            what most people on SetItUp are looking for. If your profile is reported to us as sexually explicit or
+            offensive, it will be banned. This includes kink/ fetish profiles, profiles describing which sex acts they are
+            looking for, etc.&nbsp;</p>
+        <p> We also do not allow unwanted sexually explicit messages on SetItUp. This includes descriptions of sexual acts/
+            kinks/ fetishes, sexualized comments about people's photos, etc. &nbsp;Even if someone says they are open to
+            hookups on their profile, it does NOT mean they want sexually explicit messages.</p>
+        <p> Finally, we do not allow sexually explicit photos or nudity.</p>
+        <p> We consider this to be sexual harassment and will ban any offenders that are reported to us.</p>
+        <h3 id="hate" class="weight">Hate</h3>
+        <div class="class12345">
+            <hr>
+        </div>
+        <p> We take the truth of everyone’s inalienable rights very seriously. Our belief in them has acted as our
+            inspiration since our founding. We proudly stand rooted in inclusivity. There is no room for hate
+            in a place where you’re looking for love.&nbsp;</p>
+        <p> Any content (including in profiles and messages) that promotes or condones racism, bigotry, violence, hate,
+            dehumanization, or harm against individuals or groups based on things like race, ethnicity, disability, age,
+            nationality, sexual orientation, gender, gender identity, religion, appearance, or occupation/association with a
+            group is strictly forbidden and may result in you being permanently banned. This includes but is not limited to:
+        </p>
+        <ul>
+            <li>Symbols of hate groups in photos, racist or offensive memes, etc.</li>
+            <li>Hateful slurs, offensive statements, coded language, dog whistles, or references to being a member of a hate
+                group</li>
+            <li>Giving approval&nbsp;(even tacit)&nbsp;or statements of support towards a hate group or their ideals</li>
+            <li>It also includes your reports to SetItUp staff: if you flag a profile for no other reason than being trans,
+                for example, it may result in your own profile being banned.</li>
+        </ul>
+        <h3 id="violent " class="weight">Violent or Graphic Content</h3>
+        <div class="class12345">
+            <hr>
+        </div>
+        <p> We do not allow any content in photos, profiles, or messages that is threatening, incites violence, contains
+            graphic or gratuitous violence or gore, or is&nbsp;disturbing or otherwise inappropriate for a dating site. This
+            does also include depictions of self harm which can in turn be harmful for others to see. This content will be
+            removed and may also get you banned. &nbsp;</p>
+        <h3 id="names" class="weight">Profile names and profile text</h3>
+        <div class="class12345">
+            <hr>
+        </div>
+        <p> We consider your profile's display name&nbsp;and your profile text to be similar to a first message or first
+            impression to other members of the site: we expect both to be respectful and appropriate. If your profile text
+            or name could be seen as offensive, hateful, obscene, or clearly trolling, we will take moderation action, up to
+            and including banning your profile. <br> <br> Your listed name&nbsp;should be the name you like to go by. It can
+            be your first name, your initials, or a nickname- all are fine. It does not have to be the full name
+            on&nbsp;your birth certificate! We do not check listed names against any kind of ID, and we trust people to
+            enter names they'd like to go by themselves.&nbsp;That said, we will still moderate based on names if&nbsp;they
+            include offensive or obscene language, or make a profile appear to be fake (i.e. using a celebrity name instead
+            of your own).</p>
+        <h3 id="unique" class="weight">Unique and bona fide profile</h3>
+        <div class="class12345">
+            <hr>
+        </div>
+        <p> You must create only one unique profile. In addition, your use of SetItUp must&nbsp;be for bona fide
+            relationship-seeking purposes (for example, you may not use SetItUp solely to compile a report of compatible
+            singles in your area, to find people to join a club or group activity, or to write a school research paper).</p>
+        <h3 id="fake" class="weight">Fake Accounts</h3>
+        <div class="class12345">
+            <hr>
+        </div>
+        <p> We do not tolerate any kind of fake accounts on SetItUp. Your profile must be really of you, and must be for
+            dating purposes.</p>
+        <p> Creating a fake account will get your main account as well as the fake account(s) banned.&nbsp; <br> <br> Also,
+            your profile details such as age, height, location, etc. must be accurate. We restrict searching and showing
+            profiles based on mutual fit for details like age, location, gender, and orientation for a reason: so that you
+            can find a person who is looking for someone just like you.&nbsp;Changing these details&nbsp;to appear in
+            searches that you would not otherwise&nbsp;is not allowed and will result in your profile being
+            banned.&nbsp;&nbsp;</p>
+        <h3 id="solicitation " class="weight">Solicitation</h3>
+        <div class="class12345">
+            <hr>
+        </div>
+        <p> Using SetItUp for commercial solicitation or exchange of money is prohibited. Do not share your own financial
+            information (PayPal, Venmo, Amazon wishlist, etc.) for the purpose of receiving money or goods from other
+            members. Do not attempt to get other member's financial or other private information. &nbsp;</p>
+        <p> Do not send messages or create accounts for the purpose of driving members to a business or external site. This
+            includes&nbsp;recruiting people for a hobby or activity if it's&nbsp;not for dating purposes.&nbsp; <br> <br> We
+            also do not allow references to sugar daddy/baby dating, asking for gifts to date, wanting to be $poiled, etc,
+            or phrases like "Send me $5 and see what happens" on your profile. This all falls under solicitation of
+            money/goods and is not allowed.&nbsp;</p>
+        <p> Likewise, we also do not allow offers of money for sex, sugar daddies, acceptance of solicitation offers,
+            etc.&nbsp;</p>
+        <p> Doing any of these will get you banned.</p>
+        <h3 id="contact" class="weight">Contact information&nbsp;</h3>
+        <div class="class12345">
+            <hr>
+        </div>
+        <p> We do not allow anyone to&nbsp;post private information for public display, including their own private
+            information, but especially other people's. Violations of other people's privacy will result in a ban.</p>
+        <p> It's always good to be cautious when exchanging contact info. A sign of a scammer, fake account, or someone up
+            to no good is when they are in a hurry to give you their offsite contact info too quickly. This could be because
+            they want to get you away from SetItUp so they can continue talking with you even after we ban them, or they are
+            sharing someone else's contact info to get revenge on them.&nbsp;</p>
+        <p> Don’t give your phone number out too quickly - If you keep communication on the dating site, then you are much
+            more protected. If the user is discovered to be a scammer or has other bad&nbsp;reports against them then you
+            may see the profile disappear quickly-- this is likely because we've banned them. If a user vanishes and
+            re-appears under another name, that is a very very bad sign. We ban people for good reasons. If you have given
+            them your phone number or email address too quickly then you won’t see if we have banned them.</p>
+        <p> If something seems strange about the way someone is exchanging contact info, or if they are displaying a phone
+            number or email address prominently on their profile or photos, please report.&nbsp;</p>
+        <h3 id="illegal" class="weight">Illegal behavior</h3>
+        <div class="class12345">
+            <hr>
+        </div>
+        <p> It should go without saying, but discussion or promotion of anything illegal is not allowed and will result in
+            getting you banned. This includes illegal sexual acts, drug dealing, fraud, threats, or anything else that is
+            against the law. We do not tolerate any kind of discussion about underage sex.</p>
+        <h3 id="minors" class="weight">Minors / under 15</h3>
+        <div class="class12345">
+            <hr>
+        </div>
+        <p> You must be 15 to use SetItUp. We do not allow minors to use SetItUp.&nbsp;Although all profiles only allow you
+            to enter an age over 15, sometimes&nbsp;people will lie about their age. If you suspect a profile of being made
+            by someone who is under 15, please report them to us.&nbsp; <br> <br> If we find someone to be knowingly
+            engaging in inappropriate conversation with someone who has revealed themselves to be under 15, we will also ban
+            that profile.&nbsp;
+        </p>
+        <ul>
+            <li>Photos should include your face (profile photo album), or be pictures you've taken (elsewhere).&nbsp;</li>
+            <li>We do not allow any photos with nudity&nbsp;or explicitly sexual content.</li>
+            <li>We also do not allow any hateful imagery (white power/ nazi images, racist meme photos, etc). This will get
+                you banned. Any photos of anything overly violent, offensive, illegal, disturbing, or otherwise
+                inappropriate for a dating site will be removed and may also get you banned. &nbsp;</li>
+            <li>Photos with contact information on them (including phone number, email address, kik, Facebook address, etc)
+                will be removed. Repeated violation of this rule or other suspicious behavior may result in the profile
+                being blocked as well.&nbsp;</li>
+            <li>Photos of you as a kid, or of your kids but without you in the photo as well will be removed.</li>
+            <li>For multiple offenses or extreme cases, profiles may also be banned and removed.</li>
+        </ul>
+        <p> If a photo is removed you will be emailed and told that this has happened and warned that repeated offenses
+            might get you banned. This warning isn't a fake one, and we will ban your account for multiple infractions.</p>
+        <h3 id="offsite" class="weight">Offsite behavior</h3>
+        <div class="class12345">
+            <hr>
+        </div>
+        <p> We do ban for extreme offsite behavior. Please report any instances of offsite abuse, assault, harassment,
+            stalking, theft, or anything else illegal or that makes you feel unsafe. (Note: we will not tell the person
+            you're reporting to us that you have reported them or why they were reported).</p>
+        <p> In these cases, we encourage you to reach out to law enforcement as well, who we will cooperate with where
+            needed. &nbsp;</p>
+        <h3 id="reporting" class="weight">Reporting</h3>
+        <div class="class12345">
+            <hr>
+        </div>
+        <p> Please help us by reporting anything or anyone that does not follow our community guidelines.&nbsp;</p>
+        <p> <strong>A note on false reporting:<br> </strong>In some cases we will ban an account if we've found it to be
+            creating false reports against other users. This includes flagging/reporting trans or nonbinary users for no
+            reason other than their gender or orientation, false/ made up reports of bad behavior, etc.&nbsp;</p>
+        <p> <strong>A final note:<br> </strong>While our community guidelines cover most instances of moderator action, it
+            is not an exhaustive list, and we do retain the right to ban
+            anyone from SetItUp for any reason if we see fit.</p>
+        </div>
+        <footer class = "footer">    
+            <div class="container-fluid footer-content">
+                <div class="row">
+                    <div class="col-12 col-md">
+                        <img class="mb-2"
+                        src="https://res.cloudinary.com/dcimcuqjm/image/upload/v1592807748/Screenshot_89_p19yzz.png" alt=""
+                        width="210" height="100" class="footer-content">
+                        <div class="share-button ml-2">
+                            <span class="font-weight-bolder"><i class="fas fa-share-alt mr-1"></i>  Share</span>
+                            <a href="http://www.facebook.com/sharer.php?u=https://setitupcorp.herokuapp.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://wa.me/?text=https://setitupcorp.herokuapp.com"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://twitter.com/share?url=https://setitupcorp.herokuapp.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://setitupcorp.herokuapp.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        </div> 
+                        <small class="d-block mb-3 text-muted footer-content ml-5 mt-3">&copy; SetItUp 2020</small>
+                    </div>
+                    <div class=" col-6 col-md">
+                        <h5>CONDITIONS</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a href="/privacy"class = "footer-content">Privacy</a></li>
+                            <li><a href="/termsandconditions" class = "footer-content">Terms</a></li>
+                            <li><a href="/guidelines"class = "footer-content">Community Guidelines</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5>FOLLOW</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a href="https://www.instagram.com/setitup_corp/" class = "footer-content">Instagram</a></li>
+                            <li><a href="https://github.com/Setitup-corp" class = "footer-content">Github</a></li>
+                            <li><a href="https://www.facebook.com/setitup.corp.1" class = "footer-content">Facebook</a></li>
+                            <li><a href="https://twitter.com/Setitup6" class = "footer-content">Twitter</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5>CONTACT</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a href="/support" class = "footer-content">Support</a></li>
+                            <li><a href="/safety" class = "footer-content">Safety Tips</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="/scripts/form-validations.js"></script>
+</body>
+</html>

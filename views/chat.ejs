@@ -1,0 +1,256 @@
+<%- include('./partials/header') -%>
+<title><%= currentUser.username %> | Chat | SetItUp</title>
+ <link rel="stylesheet" href="/stylesheets/chat.css">
+
+    <div id="chatbox"  class="container-fluid h-100">
+        <div class="row justify-content-center h-100">
+            <div class=" col-10 col-sm-6 col-lg-4 col-xl-3 chat"><div class="card mb-sm-3 mb-md-0 contacts_card">
+                <form action='/chat/<%=currentUser._id%>' method="GET" >
+                    <div class="form-group">
+                        <div class="card-header">
+                            <div class="input-group">
+                                <input type="text" placeholder="Search..." name="search" class="form-control search">
+                                <div class="input-group-prepend">
+                                    <input type="submit" class="input-group-text search_btn" value="Search">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="card-body contacts_body">
+                    <ui class="contacts">
+                        <% if( noMatch ) { %>
+                            <h1 style="text-align: center;">No Match Found</h1><i class="fas fa-frown" id="emoji"></i>
+							<% } else { %>
+								<% allusers.forEach(function(user){ %>					
+										<div class="clickable" id="<%= user._id %>" onclick="loadmessage('<%= user._id %>','<%= user.username %>','<%= user.image %>');">
+											<li class="active">
+												<div class="d-flex bd-highlight">
+													<div class="img_cont">
+														<img src="<%= user.image %>" class="rounded-circle user_img">
+														
+													</div>
+													<div class="user_info">
+														<span><%= user.username %></span>	
+													</div>
+												</div>
+											</li>
+										</div>
+									<% }) %>
+                            <% }; %>
+                    </ui>
+                </div>
+                <div class="card-footer"></div>
+            </div></div>
+            <div id="joy"></div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script>
+        (function(){
+        var element = function(id){
+            return document.getElementById(id);
+        }
+        
+        // Get Elements
+        var status = element('status');
+        var messages = element('messages');
+        var username = element('username');
+        var but = element('clickme');
+	    var typing=false;
+	    var timeout=undefined;
+        
+        
+        
+        // Connect to socket.io
+		window.socket = io.connect();
+        var tp;
+        // Check for connection
+        if(socket !== undefined){
+            console.log('Connected to socket...');
+            socket.emit('join',{ self :<%- JSON.stringify(currentUser) %>});
+            // Handle Output
+            socket.on('output', function(data){
+                console.log(data);
+                //console.log(data);
+                if(data.length){
+                    txt1 = ``;
+                    for(var x = 0;x < data.length;x++){
+                        var d = new Date(data[x].date);
+                        h = d.getHours();
+                        m = d.getMinutes();
+                        if (h.toString().length == 1) {
+                            h = "0" + h.toString();
+                        }
+                        if (m.toString().length == 1) {
+                            m = "0" + m.toString();
+                        }
+                        t = h+':'+m
+                        if(data[x].from == <%- JSON.stringify(currentUser.id) %>){
+                            txt1 += `<div class="d-flex justify-content-end mb-4">
+                                <div class="msg_cotainer_send">
+                                    `+ data[x].text +`
+                                    <span class="msg_time_send">`+ t +`</span>
+                                    </div>
+                                    <div class="img_cont_msg">
+                                        <img src="`+ data[x].image +`" class="rounded-circle user_img_msg" onerror="this.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTkDM78IoAieoxU-s9Z2FqmT02Nv9IujYs8l199PVP68H94TEZd&usqp=CAU';">
+                                        </div>
+                                        </div>`;
+                                    }
+                                    else{
+                                        txt1 += `
+                                        <div class="d-flex justify-content-start mb-4">
+                                            <div class="img_cont_msg">
+                                                <img src="`+ data[x].image +`" class="rounded-circle user_img_msg" onerror=" this.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTkDM78IoAieoxU-s9Z2FqmT02Nv9IujYs8l199PVP68H94TEZd&usqp=CAU';">
+                                                </div>
+                                                <div class="msg_cotainer">
+                                                    `+ data[x].text +`
+                                                    <span class="msg_time">`+ t +`</span>
+                                                    </div>
+                                                    </div>`;
+                                                }
+                                            }
+                                            $(".afterthis").before(txt1);
+                                            var f = document.querySelector('.msg_card_body');
+					f.scrollTop = f.scrollHeight - 320;
+                }
+            });
+            
+            // Get Status From Server
+            socket.on('status', function(data){
+                // get message status
+                // setStatus(data);
+                
+                // // If status is clear, clear text
+                // if(data.clear){
+                    //     textarea.value = '';
+                    // }
+                });
+                
+                var textareaa=document.querySelector("#joyy");
+                textareaa.addEventListener("keyup", function(event) {
+                    console.log("hi");
+                    window.socket.emit('hey', 'hey'); 
+                })
+                
+            }
+        })();
+        
+        function loadmessage(id,username,image){
+            var wuser ={
+                _id:id,
+                username:username
+            };
+            $("#destroyit").remove();
+            window.socket.emit('loaddata',{ self :<%- JSON.stringify(currentUser) %>,with : wuser });
+            var txt1 = `
+                <div id ="destroyit" class="col-10 col-sm-6 col-xl-6 chat">
+                    <div class="card">
+                        <div class="card-header msg_head">
+                            <div class="d-flex bd-highlight">
+                                <div class="img_cont">
+                                    <img src="`+ image +`" class="rounded-circle user_img">
+                                    
+                                    </div>
+                                    <div class="user_info">
+                                        <span id = "username" uid = `+id+ `>`+ username +`</span>
+                                        </div>
+                                        
+                                        </div>
+                                        
+                                        <div class="action_menu">
+                                            <ul>
+                                                <li><i class="fas fa-user-circle"></i> View profile</li>
+                                                <li><i class="fas fa-users"></i> Add to close friends</li>
+                                                <li><i class="fas fa-plus"></i> Add to group</li>
+                                                <li><i class="fas fa-ban"></i> Block</li>
+                                                </ul>
+                                                </div>
+                                                </div>
+                        <div class="card-body msg_card_body">
+                            <div class="afterthis"></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="input-group">
+                                    <div class="input-group-append">
+                                        
+                                        </div>
+                                        <textarea id="textarea" name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
+                                        <div class="input-group-append">
+                                            <span id="clickme" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                </div>`;
+                $("#joy").after(txt1);
+                a = document.getElementById("clickme");
+                var textareaa=document.getElementById('textarea');
+                var imp1=document.querySelector('.msg_cotainer');
+                var imp2=document.querySelector('.msg_cotainer_send');
+
+                textareaa.addEventListener('keyup',function(event){
+                    
+                    if(event.which===13 && !event.shiftKey)
+                    {
+                        event.preventDefault();
+                        a.click();
+                    }
+
+                    else if(event.which===13 && event.shiftKey)
+                    {
+                        this.preventDefault();
+                        pasteIntoInput(this,"\n");
+                        impl.addClass(x);
+                        imp2.addClas(x);
+
+                    }
+                });
+                a.onclick = myFunction;
+                
+
+                function pasteIntoInput(el, text) {
+    el.focus();
+    if (typeof el.selectionStart == "number"
+            && typeof el.selectionEnd == "number") {
+        var val = el.value;
+        var selStart = el.selectionStart;
+        el.value = val.slice(0, selStart) + text + val.slice(el.selectionEnd);
+        el.selectionEnd = el.selectionStart = selStart + text.length;
+    } else if (typeof document.selection != "undefined") {
+        var textRange = document.selection.createRange();
+        textRange.text = text;
+        textRange.collapse(false);
+        textRange.select();
+    }
+}
+                
+                function myFunction() {
+                    var textarea = document.getElementById("textarea");
+                    
+                    window.socket.emit('input', {
+                        from : <%- JSON.stringify(currentUser.username) %>,
+                            message: textarea.value,
+                            to : $("#username").text()
+                        });
+                        textarea.value = '';
+                        
+                        
+                        
+                        // event.preventDefault();
+                    }
+                }
+                $(document).ready(function(){
+                    $('#action_menu_btn').click(function(){
+                        $('.action_menu').toggle();
+                    });
+                });
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>    
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="/scripts/form-validations.js"></script>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+</body>
+</html>
