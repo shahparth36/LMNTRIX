@@ -121,7 +121,7 @@ own env variables you are almost ready. Just one more thing to do.
 
 ## Screenshots
 
-<img src="https://drive.google.com/file/d/1DojyqwbB0bkvs6b1bhawUDvvFdCFJlIl/view?usp=sharing" height = 350/>
+<img src="https://github.com/Setitupcorp/TLE/blob/master/Web_Screenshots/Screenshot (10).png" height = 350/>
 
 Use this template as a guide for writing your documentation. Feel free to customize and adapt it for you project.
 For more Markdown syntax help, visit [here](https://www.markdownguide.org/basic-syntax/)
