@@ -124,7 +124,7 @@ Add a few screenshots here to give the viewer a quick idea of what your project 
 
 You'll have to link the screenshots from your drive folder here.
 
-![Screenshot alt text](https://drive.google.com/file/d/177Bmta6THN4JkdS5ShPqldoePqmWW-cs/view?usp=sharing)
+[Screenshot alt text](https://drive.google.com/file/d/177Bmta6THN4JkdS5ShPqldoePqmWW-cs/view?usp=sharing)
 
 Use this template as a guide for writing your documentation. Feel free to customize and adapt it for you project.
 For more Markdown syntax help, visit [here](https://www.markdownguide.org/basic-syntax/)
